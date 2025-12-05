@@ -1,9 +1,9 @@
 import Sequelize from 'sequelize';
-import ResponseHelper from '../utils/response.utils';
+import ResponseHelper from '../utils/response.utils.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import models from '../models/index';
-import sequelize from '../config/database';
+import models from '../models/index.js';
+import sequelize from '../config/database.js';
 import { validationResult, matchedData } from 'express-validator';
 
 

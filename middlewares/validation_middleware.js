@@ -1,5 +1,5 @@
 import { body, check, validationResult } from "express-validator";
-import models from "../models/index";
+import models from "../models/index.js";
 /***************************************************************************
  *********** Common validations for all api requests starts here ***********
  ***************************************************************************/

@@ -1,6 +1,6 @@
 import express from 'express';
-import loginValidation from '../middlewares/validation_middleware';
-import AuthController from '../controllers/auth.controller';
+import loginValidation from '../middlewares/validation_middleware.js';
+import AuthController from '../controllers/auth.controller.js';
 const router = express.Router();
 
 
