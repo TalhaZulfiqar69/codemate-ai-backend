@@ -1,5 +1,7 @@
 import express from 'express';
 import authRouter from './users.js';
+import llmRouter from './llm.js';
+
 const router = express.Router();
 
 /* GET default server response. */
@@ -13,5 +15,6 @@ router.get('/', function (req, res) {
 });
 
 router.use('/api/admin', authRouter); // Auth routes
+router.use('/api/llm', llmRouter); // LLM routes
 
 export default router
