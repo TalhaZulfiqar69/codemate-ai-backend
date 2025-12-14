@@ -14,7 +14,7 @@ router.get('/', function (req, res) {
     });
 });
 
-router.use('/api/admin', authRouter); // Auth routes
-router.use('/api/llm', llmRouter); // LLM routes
+router.use('/admin', authRouter); // Auth routes
+router.use('/llm', llmRouter); // LLM routes
 
 export default router
