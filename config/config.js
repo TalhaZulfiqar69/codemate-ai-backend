@@ -4,25 +4,25 @@ dotenv.config();
 
 const config = {
   development: {
-    username: process.env.DB_USERNAME || 'postgres',
-    password: process.env.DB_PASSWORD || null,
-    database: process.env.DB_DATABASE || 'database_test',
-    host: process.env.DB_HOST || '127.0.0.1',
-    dialect: process.env.DB_DIALECT || 'postgres',
+    username: process.env.DATABASE_USERNAME || 'postgres',
+    password: process.env.DATABASE_PASSWORD || null,
+    database: process.env.DATABASE_DATABASE || 'database_test',
+    host: process.env.DATABASE_HOST || '127.0.0.1',
+    dialect: process.env.DATABASE_DIALECT || 'postgres',
   },
   test: {
-    username: process.env.DB_USERNAME || 'root',
-    password: process.env.DB_PASSWORD || null,
-    database: process.env.DB_DATABASE || 'database_test',
-    host: process.env.DB_HOST || '127.0.0.1',
-    dialect: process.env.DB_DIALECT || 'mysql',
+    username: process.env.DATABASE_USERNAME || 'root',
+    password: process.env.DATABASE_PASSWORD || null,
+    database: process.env.DATABASE_DATABASE || 'database_test',
+    host: process.env.DATABASE_HOST || '127.0.0.1',
+    dialect: process.env.DATABASE_DIALECT || 'mysql',
   },
   production: {
-    username: process.env.DB_USERNAME || 'root',
-    password: process.env.DB_PASSWORD || null,
-    database: process.env.DB_DATABASE || 'database_production',
-    host: process.env.DB_HOST || '127.0.0.1',
-    dialect: process.env.DB_DIALECT || 'mysql',
+    username: process.env.DATABASE_USERNAME || 'root',
+    password: process.env.DATABASE_PASSWORD || null,
+    database: process.env.DATABASE_DATABASE || 'database_production',
+    host: process.env.DATABASE_HOST || '127.0.0.1',
+    dialect: process.env.DATABASE_DIALECT || 'mysql',
   }
 };
 
