@@ -2,7 +2,7 @@ module.exports = {
   apps : [
     {
       name: "codemate-ai-backend",
-      script: "./bin/www",
+      script: "./dist/bin/www.ts",
       watch: false,
       env: {
         NODE_ENV: "production",

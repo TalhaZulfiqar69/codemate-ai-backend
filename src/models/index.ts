@@ -4,26 +4,26 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import Sequelize from 'sequelize';
-import configData from '../config/config.js';
+import configData from '../config/config';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const env = process.env.NODE_ENV || 'development';
-const config = configData[env];
-const db = {};
+const config = (configData as any)[env];
+const db: any = {};
 
-let sequelize;
+let sequelize: any;
 if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+  sequelize = new (Sequelize as any)(process.env[config.use_env_variable], config);
 } else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+  sequelize = new (Sequelize as any)(config.database, config.username, config.password, config);
 }
 
 fs
   .readdirSync(__dirname)
   .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== path.basename(__filename)) && (file.slice(-3) === '.js');
+    return (file.indexOf('.') !== 0) && (file !== path.basename(__filename)) && (file.slice(-3) === '.js' || file.slice(-3) === '.ts');
   })
   .forEach(file => {
     import(path.join(__dirname, file))

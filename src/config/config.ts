@@ -1,7 +1,22 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-export default {
+interface DatabaseConfig {
+  username: string | undefined;
+  password: string | undefined;
+  database: string | undefined;
+  host: string | undefined;
+  dialect: string | undefined;
+  port: string | number;
+}
+
+interface Config {
+  development: DatabaseConfig;
+  test: DatabaseConfig;
+  production: DatabaseConfig;
+}
+
+const config: Config = {
   development: {
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
@@ -27,3 +42,5 @@ export default {
     port: process.env.DATABASE_PORT || 5432,
   }
 };
+
+export default config;

@@ -1,5 +1,9 @@
 {
-    "exec": "node --experimental-specifier-resolution=node ./bin/www",
-    "watch": ["./"]
+  "watch": ["src"],
+  "ext": "ts",
+  "ignore": ["node_modules", "dist"],
+  "delay": 500,
+  "env": {
+    "NODE_ENV": "development"
   }
-  
+}
