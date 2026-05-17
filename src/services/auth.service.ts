@@ -1,13 +1,13 @@
+import { type Request, type Response } from 'express';
 import Sequelize from 'sequelize';
-import ResponseHelper from '../utils/response.utils.js';
+import ResponseHelper from '../utils/response.utils';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import models from '../models/index.js';
-import sequelize from '../config/database.js';
+import models from '../models/index';
+import sequelize from '../config/database';
 import { validationResult, matchedData } from 'express-validator';
 
-
-export const login = async (req, res) => {
+export const login = async (req: Request, res: Response) => {
     let response = ResponseHelper.getResponse(
         false,
         'Something went wrong',
@@ -30,20 +30,14 @@ export const login = async (req, res) => {
             if (user) {
                 const verifyPassword = bcrypt.compareSync(password, user.password);
                 if (verifyPassword == false) {
-                    response.message = MessageHelper.getMessage(
-                        'incorrect_password_error',
-                        language
-                    );
+                    response.message = 'Incorrect password';
                 } else {
                     if (user.is_verified == 0) {
-                        response.message = MessageHelper.getMessage(
-                            'account_not_verified_message',
-                            language
-                        );
+                        response.message = 'Account not verified';
                     } else {
                         const token = jwt.sign(
                             { email: user.email },
-                            meducomConfig.custom.jwtSecretString,
+                            process.env.JWT_SECRET || 'your-secret-key',
                             { expiresIn: '1h' }
                         );
                         const admin_user = {
@@ -72,8 +66,8 @@ export const login = async (req, res) => {
         await t.rollback();
         console.log('error', err);
         response.message = "An exception error occured.";
-        response.statue = 500;
+        response.status = 500;
     } finally {
         return res.status(response.status).json(response);
     }
-}
+};

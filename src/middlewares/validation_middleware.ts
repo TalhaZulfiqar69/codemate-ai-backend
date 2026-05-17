@@ -1,5 +1,5 @@
 import { body, check, validationResult } from "express-validator";
-import models from "../models/index.js";
+import models from "../models/index";
 
 const email = check("email")
   .notEmpty()

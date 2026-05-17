@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
-import { login } from '../services/index.js';
+import { type Request, type Response } from 'express';
+import { login } from '../services/index';
 
 class AuthController {
     static async login(req: Request, res: Response) {

@@ -1,6 +1,6 @@
-import express, { Router, Request, Response } from 'express';
-import authRouter from './users.js';
-import llmRouter from './llm.js';
+import express, { type Router, type Request, type Response } from 'express';
+import authRouter from './users';
+import llmRouter from './llm';
 
 const router: Router = express.Router();
 

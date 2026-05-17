@@ -1,20 +1,12 @@
-// import { login } from '../services/index.js';
+import { type Request, type Response } from 'express';
 import axios from "axios";
 import { marked } from "marked";
-
-import ResponseHelper from "../utils/response.utils.js";
+import ResponseHelper from "../utils/response.utils";
 
 const LLM_URL = process.env.LLM_MODEL_BASE_URL;
 
 class LLMController {
-  /**
-   * @param req request body
-   * @param res callback response object
-   * @description Method to login
-   * @date 06 DEC 2025
-   * @updated 06 DEC 2025
-   */
-  static async getLLMResponse(req, res) {
+  static async getLLMResponse(req: Request, res: Response) {
     let response = ResponseHelper.getResponse(
       false,
       "Something went wrong",
@@ -43,13 +35,12 @@ class LLMController {
         response.success = false;
       }
       response.message = "LLM response is success";
-      // response.data = { message: marked(llm.data.response) };
       response.data = { message: llm.data };
       response.status = 200;
       response.success = false;
 
     } catch (error) {
-      response.message = error;
+      response.message = String(error);
     } finally {
       return res.status(response.status).json(response);
     }
